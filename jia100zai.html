@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百分之一到百分之百</title>
+</head>
+<style>
+    canvas{
+        border: 1px solid #CCC;
+    }
+</style>
+<body>
+    <canvas width="300" height="400">
+
+    </canvas>
+<script>
+    let canvas = document.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+
+    let a = 0;
+    let b = setInterval(function () {
+        a++;
+        let ang = 2*Math.PI/100;
+//        设置半径
+        let c = 120;
+//        设置字体
+        ctx.clearRect(100,100,300,400);
+        ctx.beginPath();
+        ctx.arc(150,200,c,0,ang*a);
+        ctx.strokeStyle = 'd';
+//        边的描边
+        ctx.stroke();
+//        宽度
+        ctx.lineWidth = 2;
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.font = '20px San Francisco';
+        //        字体颜色
+        ctx.strokeStyle = '#DEDEDE';
+//        字体位置
+        ctx.strokeText(`${a}%`,130,200);
+        if(a==100){
+            clearInterval(b);
+        }
+    },50)
+</script>
+</body>
+</html>
